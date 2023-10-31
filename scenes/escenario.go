@@ -21,12 +21,18 @@ func (e *Escenario) RenderAutomovil(n *models.Parking) {
 		e.window.Canvas().Refresh(e.contenido)
 	}
 }
+
+// Mis Go Rutines
 func (e *Escenario) IniciarSimulacion() {
-	n := models.CrearParking(20)
+
+	//	Numero de espacios
+	n := models.CrearParking(3)
+	//	Numero de automoviles
 	go poison.MetodoPoison(100, n)
 	go e.RenderAutomovil(n)
 
 }
+
 func (e *Escenario) Renderizado() {
 	bgImagen := canvas.NewImageFromURI(storage.NewFileURI("./assets/Parking.png"))
 	bgImagen.Resize(fyne.NewSize(800, 600))
@@ -36,6 +42,7 @@ func (e *Escenario) Renderizado() {
 	e.window.SetContent(e.contenido)
 	e.IniciarSimulacion()
 }
+
 func NuevaEscena(window fyne.Window) *Escenario {
 	escena := &Escenario{window: window}
 	escena.Renderizado()
