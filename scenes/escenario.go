@@ -14,12 +14,11 @@ type Escenario struct {
 	contenido *fyne.Container
 }
 
-func (e *Escenario) RenderAutomovil(a *models.Parking) {
+func (e *Escenario) RenderAutomovil(n *models.Parking) {
 	for {
-		autoImage := a.ColocarAutomovil
-		e.contenido.Add(autoImage)
+		Autoimagen := <-n.ColocarAutomovil
+		e.contenido.Add(Autoimagen)
 		e.window.Canvas().Refresh(e.contenido)
-
 	}
 }
 func (e *Escenario) IniciarSimulacion() {
