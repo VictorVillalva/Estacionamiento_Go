@@ -1,7 +1,18 @@
 package main
 
-import "fmt"
+import (
+	"Proyecto2/scenes"
+	"fyne.io/fyne/v2"
+	"fyne.io/fyne/v2/app"
+)
 
 func main() {
-	fmt.Printf("Hola mundo")
+	a := app.New()
+	w := a.NewWindow("Parking de millonarios")
+
+	w.CenterOnScreen()
+	w.SetFixedSize(true)
+	w.Resize(fyne.NewSize(800, 600))
+	scenes.NuevaEscena(w)
+	w.ShowAndRun()
 }
